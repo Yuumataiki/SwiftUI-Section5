@@ -8,19 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var num:Int = 0
+    let janken = ["グー","チョキ","パー"]
+    @State var te = ""
     
     var body: some View {
-        HStack{
-            Text("\(num)")
-                .font(.system(size: 50))
-                .padding(.trailing)
-            Button(action: { num += 1 }, label: {
-                Text("Tap").font(.largeTitle)
-            })
-        }
-        .frame(width: 200, height: 80, alignment: .center)
-        .border(Color.gray, width: 1)
+        VStack {
+            Button("じゃんけん") {
+                te = janken.randomElement()!
+            }
+            .foregroundColor(.white)
+            .background(
+                Capsule()
+                    .foregroundColor(.blue)
+                    .frame(width: 120, height: 40)
+            )
+            Text(te)
+                .font(.largeTitle)
+                .padding()
+            }
     }
 }
 
